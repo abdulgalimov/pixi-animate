@@ -27,7 +27,9 @@ function start() {
   bunny = new PIXI.Sprite(PIXI.Texture.from('examples/img/bunny.png'));
   bunny.anchor.set(0.5, 0.5);
   bunny.scale.set(2);
+  bunny.position.set(back.width/2, back.height/2);
   app.stage.addChild(bunny);
+  //
   bunny.animateDefine('position', {
     time: 300,
     easing: PIXI.tween.Easing.outBack()
@@ -36,9 +38,6 @@ function start() {
     time: 3000,
     easing: PIXI.tween.Easing.outBack()
   });
-  //
-  bunny.x = back.width/2;
-  bunny.y = back.height/2;
   //
   bunny.interactive = true;
   bunny.pointertap = function() {

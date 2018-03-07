@@ -78,7 +78,6 @@
     if (invertNames[name]) name = invertNames[name];
     options = options||{};
     //
-    var def = {};
     var originName = names[name] ? names[name] : name;
     if (!(this[originName] instanceof PIXI.ObservablePoint)) {
       var target = !targets[name] ? this : this[targets[name]];
@@ -107,12 +106,9 @@
     } else {
       var list = ['x', 'y'];
       for (var i = 0; i < list.length; i++) {
-        var prop = list[i];
-        //
-        defObservableProp(this, name, prop, options);
+        defObservableProp(this, name, list[i], options);
       }
-      def = {};
-      def.set = {
+      Object.defineProperty(this[name], 'set', {
         value: function(x, y) {
           x = x||0;
           y = y || ((y !== 0) ? x : 0);
@@ -120,8 +116,7 @@
           this.x = x;
           this.y = y;
         }
-      };
-      Object.defineProperties(this[name], def);
+      });
     }
   };
   PIXI.DisplayObject.prototype.animateGet = function(name) {
