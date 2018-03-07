@@ -13,4 +13,6 @@ sprite.x = 100;
 sprite.y = 200;
 ```
 
+[Example](examples/app.js)
+
 [Demo](https://abdulgalimov.github.io/pixi-animate/)
